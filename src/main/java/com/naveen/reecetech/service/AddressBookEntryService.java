@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
@@ -15,12 +14,11 @@ import com.naveen.reecetech.model.AddressBookEntry;
 
 /**
  * The service class associated with handling of address book entries of the address book.
+ * Interface was not considered due to the limited behavior.
  */
 @Service
 public class AddressBookEntryService {
-	
-	private static final Logger LOG = Logger.getLogger(AddressBookEntryService.class.getName());
-	
+		
 	/**
 	 * Map used to hold address book entries in memory.
 	 */
@@ -57,7 +55,7 @@ public class AddressBookEntryService {
     /**
      * Used to delete/remove an address book entry.
      * @param number - the number associated with the address book entry.
-     * @throws Exception -e
+     * 
      */
 	public ResponseEntity<List<AddressBookEntry>> removeAddressBookEntry(String number) throws Exception{
 		List<AddressBookEntry> entriesToDelete = addressBookMap.values().stream().flatMap(List::stream).filter(n -> n.getNumber().equals(number)).collect(Collectors.toList());
